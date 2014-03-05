@@ -1,5 +1,4 @@
-# Redis HA - sentinel + haproxy + haproxy stats api
-
+# Redis HA - sentinel + haproxy 
 
 ### Run redis cluster
 ```
