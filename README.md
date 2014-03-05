@@ -1,4 +1,26 @@
-# Redis HA - sentinel + haproxy 
+# Redis HA - sentinel + haproxy
+
+- sentinel: autoswitch master/slave
+- haproxy: active check for only master node
+- haproxy api: disable failed nodes to prevent multimaster
+
+without haproxy maintenance mode
+```
+  A is master, B is slave
+  A crashes, sentinel convert B to master
+  A is recovered (still master)
+  haproxy balancing between A and B, until sentinel convert A to slave
+  data written to A are lost
+```
+
+witch haproxy maintenance mode via notification script
+```
+  A is master, B is slave
+  A crashes, sentinel convert B to master
+  haproxy disable A
+  A is recovered (still master) but disabled in haproxy
+  haproxy points only to B
+```
 
 ### Run redis cluster
 ```

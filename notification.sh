@@ -4,12 +4,11 @@ CMD="$1"
 ARGS="$2"
 ARG1=`echo $ARGS | awk '{print $1}'`
 
-echo $1 ---- $2 >> /tmp/xxx
 
 call_curl () {
 	DATA=`echo "s=$1&action=$2&b=%234" | sed -e s/:/%3A/`
 	curl $HAPROXY --data "$DATA"
-	echo curl $HAPROXY --data "$DATA" -- $CMD $ARGS
+	echo curl $HAPROXY --data "$DATA"
 }
 
 
