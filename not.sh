@@ -12,6 +12,7 @@ call_curl () {
 	echo curl $HAPROXY --data "$DATA" -- $CMD $ARGS
 }
 
+
 [ "$CMD" = "+sdown" ] && [ "$ARG1" = "master" ] && \
 	call_curl `echo $ARGS | awk '{print $2 ":" $3 ":" $4}'` 'disable'
 
@@ -23,3 +24,9 @@ call_curl () {
 
 [ "$CMD" = "+switch-master" ] && \
 	call_curl `echo $ARGS | awk '{print $1 ":" $4 ":" $5}'` 'enable'
+
+[ "$CMD" = "+elected-leader" ] && \
+	call_curl `echo $ARGS | awk '{print $2 ":" $3 ":" $4}'` 'enable'
+
+# without exit code, sentinel thinks the script is still running and locks any further execution
+exit 0
