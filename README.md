@@ -4,6 +4,8 @@
 - haproxy: active check for only master node
 - haproxy api: disable failed nodes to prevent multimaster
 
+!["diagram"](diagram.png)
+
 without haproxy maintenance mode
 ```
   A is master, B is slave
