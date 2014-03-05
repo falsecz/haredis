@@ -52,7 +52,7 @@ Open http://localhost:8080/ and try kill some redis
 
 ### Notice
 tested on
-- redis 2.6.8
+- redis 2.8.6
 - haproxy 1.5-dev21
 
 [!] in production on single host you must specify different data dir before SLAVEOF command otherwise you loose data on master
